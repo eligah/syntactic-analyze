@@ -1,0 +1,55 @@
+{% extends "navbar.html" %}
+{% load staticfiles %}
+
+{% block title %}单句处理{% endblock %}
+
+{% load staticfiles %}
+
+
+{% block content %}
+
+    <div class="doc-header">
+        <div class="container">
+            <h1>单句处理</h1>
+            <p>我们帮您进行句子分析</p>
+        </div>
+
+        <div id="usageIntroduction" class=" container alert alert-block fade in">
+            <h1>使用介绍</h1>
+            用户在界面输入一个句子，系统输出：<br>
+            <ul>
+                <li>句子中的关键词</li>
+                <li>句子的语法结构</li>
+                <li>句子的语气</li>
+            </ul>
+
+            <h2>你们对系统准确性的评判能让我们做的更好!</h2>
+            <button id="alertclose" type="button" class="close" onclick="$('#usageIntroduction').alert('close');
+          appendText()"><span>试一试</span>
+            </button>
+        </div>
+    </div>
+    <!--将后面输入和显示框与上面的导航栏拉开一定差距-->
+    <div id="warpper">
+        <div class="container" id="doc-input" style="display:none">
+            {% include 'simple/search_box.html' %}
+        </div>
+    </div>
+    <script src="{% static 'js/d3.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/parser.js' %}" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{% static 'js/feedback.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/analysis.js' %}"></script>
+
+    <script>//    将输入栏目显示出来   设置了200s的延时
+    function appendText() {
+        setTimeout(function () {
+            $("#doc-input").attr("style", "display:block");
+        }, 200);
+    }
+    </script>
+
+
+{% endblock %}
+
+

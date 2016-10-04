@@ -1,0 +1,35 @@
+{% extends "navbar.html" %}
+
+{% block content %}
+    <div id="usageIntroduction" class="alert alert-block fade in">
+        <button id="alertclose" type="button" class="close" onclick="$('#usageIntroduction').alert('close');
+        ">&times
+        </button>
+        <h1>使用介绍</h1>
+        <p>用户在界面输入一个句子，系统输出：<br>
+        <li>句子中的关键词</li>
+        <li>句子的语法结构</li>
+        <li>句子的语气</li>
+        </p>
+        <p>你们对系统准确性的评判能让我们做的更好!</p>
+    </div>
+    <!--<div class="usageIntroduction" style="display: none">-->
+    <!--<h1>使用介绍</h1>-->
+    <!--<p>用户在界面输入一个句子，系统输出：<br>-->
+    <!--<li>句子中的关键词</li>-->
+    <!--<li>句子的语法结构</li>-->
+    <!--<li>句子的语气</li>-->
+    <!--</p>-->
+    <!--<p>你们对我们系统准确性的评判能让我们做的更好</p>-->
+    <!--<button-->
+    <!--</div>-->
+    <!--</div>-->
+{% endblock %}
+
+
+<script>
+    <!-- js代码 消息提示 ,点击事件 -->
+    $('#alertclose').click(function () {
+        $('#alerttest').alert('close');
+    });
+</script>

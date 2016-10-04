@@ -1,0 +1,94 @@
+[
+  {
+    "cont": "\u6211\u4eec",
+    "parent": 1,
+    "semparent": 1,
+    "relate": "SBV",
+    "semrelate": "Agt",
+    "ne": "O",
+    "pos": "r",
+    "arg": [],
+    "id": 0
+  },
+  {
+    "cont": "\u5e2e",
+    "parent": -1,
+    "semparent": -1,
+    "relate": "HED",
+    "semrelate": "Root",
+    "ne": "O",
+    "pos": "v",
+    "arg": [
+      {
+        "end": 0,
+        "type": "A0",
+        "id": 0,
+        "beg": 0
+      },
+      {
+        "end": 2,
+        "type": "A1",
+        "id": 1,
+        "beg": 2
+      },
+      {
+        "end": 5,
+        "type": "A2",
+        "id": 2,
+        "beg": 3
+      }
+    ],
+    "id": 1
+  },
+  {
+    "cont": "\u60a8",
+    "parent": 1,
+    "semparent": 1,
+    "relate": "DBL",
+    "semrelate": "Datv",
+    "ne": "O",
+    "pos": "r",
+    "arg": [],
+    "id": 2
+  },
+  {
+    "cont": "\u8fdb\u884c",
+    "parent": 1,
+    "semparent": 1,
+    "relate": "VOB",
+    "semrelate": "eSucc",
+    "ne": "O",
+    "pos": "v",
+    "arg": [
+      {
+        "end": 5,
+        "type": "A1",
+        "id": 0,
+        "beg": 4
+      }
+    ],
+    "id": 3
+  },
+  {
+    "cont": "\u53e5\u5b50",
+    "parent": 5,
+    "semparent": 5,
+    "relate": "ATT",
+    "semrelate": "Agt",
+    "ne": "O",
+    "pos": "n",
+    "arg": [],
+    "id": 4
+  },
+  {
+    "cont": "\u5206\u6790",
+    "parent": 3,
+    "semparent": 3,
+    "relate": "VOB",
+    "semrelate": "Cont",
+    "ne": "O",
+    "pos": "v",
+    "arg": [],
+    "id": 5
+  }
+]

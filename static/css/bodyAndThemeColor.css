@@ -1,0 +1,57 @@
+
+body {
+    color: #333333;
+    /*background: #e4e4e4;*/
+    padding-top: 50px;
+}
+
+
+
+.doc-header {
+    background: #0061c2;
+    color: #ffffff;
+}
+
+#cloudFooter {
+    background: #0061c2;
+    color: #ffffff;
+    text-align: center;
+}
+
+#cloudFooter a  {
+    color: whitesmoke;
+}
+
+#warpper{
+    background: #f8f8f8;
+    padding-top: 20px;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#loadingTag
+{
+    font-size: 14px;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+    display: none;
+}
+#analysis-Panel{
+    margin-top: 50px;
+}
+
+.state
+{
+    color:blue;
+}
+.question
+{
+    color: yellow;
+}
+
+.negatives{
+    color:brown;
+}
+
+

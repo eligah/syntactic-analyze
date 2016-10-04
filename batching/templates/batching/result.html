@@ -1,0 +1,89 @@
+{% extends "navbar.html" %}
+
+{% block title %}批量处理{% endblock %}
+
+{% load staticfiles %}
+{% block head %}
+    <link rel='stylesheet prefetch' href="{% static 'css/batchresult.css' %}">
+    <script src="{% static 'js/d3.v3.min.js' %}" charset="utf-8"></script>
+    <script src="{% static 'js/d3.layout.cloud.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>
+        {% else %}
+            <section class="zzsc-container ">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10 col-sm-10 col-md-offset-1">
+                            <h3>分析结果</h3>
+                            <div class="panel-group wrap" id="bs-collapse">
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#" href="#one">
+                                                文字云结果
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="one" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div id="WordCloud"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- end of panel -->
+
+                                <div class="panel">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#" href="#two">
+                                                雷达图结果
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="two" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <div id="radar"></div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <!-- end of panel -->
+                            </div>
+                            <!-- end of #bs-collapse  -->
+                        </div>
+                    </div>
+                    <!-- end of wrap -->
+                </div><!-- end of container -->
+            </section>
+        {% endif %}
+    </div>
+
+{% endblock %}
+
+
+{% block javascripts %}
+
+    <script src="{% static 'js/radar.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/cloud.js' %}" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            bind_radar("{% static 'js/dataFolder/radar_data.csv' %}", '#radar');
+            bind_cloud("{% static 'js/dataFolder/cloud_features.csv' %}", '#WorldCloud');
+            $('.collapse.in').prev('.panel-heading').addClass('active');
+            $('#accordion, #bs-collapse')
+                    .on('show.bs.collapse', function (a) {
+                        $(a.target).prev('.panel-heading').addClass('active');
+                    })
+                    .on('hide.bs.collapse', function (a) {
+                        $(a.target).prev('.panel-heading').removeClass('active');
+                    });
+        });
+    </script>
+
+{% endblock %}
+

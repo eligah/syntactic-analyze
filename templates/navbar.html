@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Title{% endblock %}</title>
+
+    {% load staticfiles %}
+    <!-- Bootstrap -->
+    <link href="{% static 'bootstrap/bootstrap.min.css' %}" rel="stylesheet" type="text/css">
+    <link href="{% static 'css/bodyAndThemeColor.css' %}" rel="stylesheet" type="text/css">
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+
+<nav class="navbar navbar-default navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#home-navigation" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">CloudDemo</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="home-navigation">
+            <ul class="nav navbar-nav">
+                {% block menu %}
+                    <li id="intro"><a href="{% url 'home' %}">简介</a></li>
+                    <li id="simple"><a href="{% url 'simple:input' %}">单句处理</a></li>
+                    <li id="batching"><a href="{% url 'batching:input' %}">批量处理</a></li>
+                {% endblock %}
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div id="container">
+    {% block content %}{% endblock %}
+</div>
+
+<div class="container-fluid navbar-fixed-bottom " id="cloudFooter">
+    <div class="row">
+        <div class="col-md-4">&copy; 2016<a href="#" target="_blank">cike</a></div>
+        <div class="col-md-4"><a href="#">关于我们</a></div>
+        <div class="col-md-4"><a href="#" target="_blank">邮件列表</a></div>
+    </div>
+    本站使用<a href="http://getbootstrap.com" target="_blank">twitter bootstrap</a>和
+    <a href="https://www.djangoproject.com/" target="_blank">django</a> 搭建
+    并使用了<a href="http://www.ltp-cloud.com/intro/" target="_blank">哈工大语言云平台</a>的部分服务
+</div>
+
+<script src="{% static 'js/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,96 @@
+{% extends "navbar.html" %}
+
+{% load staticfiles %}
+{% block title %}{{ object.get_washed_text }}{% endblock %}
+
+{% block content %}
+
+    <link href="{% static 'css/simple_result.css' %}" rel="stylesheet" type="text/css">
+
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>
+    {% else %}{% endif %}
+
+
+    <div class="jumbotron">
+
+        <!--展示结果-->
+        <div class="container" id="analysis-Panel">
+
+            {% include 'simple/search_box.html' %}
+
+            <svg id="parserTree"></svg>
+
+            <div class="panel-collapse" id="show_text"></div>
+
+            <div class="row">
+                <div class="col-lg-10">
+                    <!--注意下一句的类型-->
+                    <p class="bg-primary" id="feedbackText"></p>
+                </div>
+                <div class="col-lg-2">
+                    <div class="btn-group">
+                        <button class="btn" id="backBtn">正确</button>
+                        <button class="btn dropdown-toggle" data-toggle="dropdown">
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a id="cQuestion" href="#">疑问句</a></li>
+                            <li><a id="cNegatives" href="#">否定句</a></li>
+                            <li><a id="cState" href="#">陈述句</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="panel-collapse">
+                {{ object.get_lexical_tree }}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script src="{% static 'js/d3.min.js' %}" type="text/javascript"></script>
+    <script src="{% static 'js/parser.js' %}" type="text/javascript"></script>
+
+    <script type="text/javascript" src="{% static 'js/feedback.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/analysis.js' %}"></script>
+    <script>
+
+        parser({{ object.get_lexical_tree_strip|safe }});
+        var $sentence = "{{ object.sentence_text }}";
+        var $content = $("#analysis-Panel");
+
+        $content.find("#show_text").append($sentence);
+        $content.find("#feedbackText").append('{{ object.syntactic }}');
+        if (!$content.is(":visible")) {
+            $content.show();
+        }
+
+    </script>
+
+
+    <script>
+        /**
+         * Created by eligah on 2016/3/30.
+         */
+        send_feedback = function (id, original, feedback) {
+            $.post()
+        };
+        $(function () {
+            $("#cQuestion").bind("click", function () {
+                $("#backBtn").replaceWith("<button class=\"btn\" id=\"backBtn\">疑问句</button>")
+            });
+            $("#cNegatives").bind("click", function () {
+                $("#backBtn").replaceWith("<button class=\"btn\" id=\"backBtn\">否定句</button>")
+            });
+            $("#cState").bind("click", function () {
+                $("#backBtn").replaceWith("<button class=\"btn\" id=\"backBtn\">陈述句</button>")
+            });
+        })
+
+
+    </script>
+{% endblock %}

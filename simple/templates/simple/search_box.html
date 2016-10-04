@@ -1,0 +1,11 @@
+<form action="{% url 'simple:analysis' %}" method="post">
+    {% csrf_token %}
+    <div class="row-fluid">
+        <div class="col-lg-10">
+            <input class="form-control" type="text" name="input" placeholder="请输入想要分析的句子"/>
+        </div>
+        <div class="col-lg-2">
+            <input type="submit" id="analysis" class="btn btn-default" value="分析"/>
+        </div>
+    </div>
+</form>
